@@ -100,4 +100,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     animatedElements.forEach(el => observer.observe(el));
 });
-
