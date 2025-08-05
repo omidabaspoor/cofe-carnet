@@ -135,7 +135,7 @@ img { max-width: 100%; display: block; }
     .gallery__grid { grid-template-columns: 1fr; }
 
 }
-/* --- 13. NEW: Mobile Navigation Styles --- */
+/* --- 13. CORRECTED: Mobile Navigation Styles --- */
 
 .mobile-nav-toggle {
     display: none; /* Hidden on desktop */
@@ -204,22 +204,18 @@ img { max-width: 100%; display: block; }
         font-size: 1.5rem;
     }
     
-    /* When menu is open */
-    .nav-open .header__nav {
+    /* When header has .nav-open class */
+    .header.nav-open .header__nav {
         transform: translateX(0%);
     }
 
-    .nav-open .mobile-nav-toggle::before {
+    .header.nav-open .mobile-nav-toggle::before {
         top: 45%;
         transform: rotate(45deg);
     }
-    .nav-open .mobile-nav-toggle::after {
+    
+    .header.nav-open .mobile-nav-toggle::after {
         top: 45%;
         transform: rotate(-45deg);
-    }
-    
-    /* Prevent scrolling when menu is open */
-    .nav-open {
-        overflow: hidden;
     }
 }
