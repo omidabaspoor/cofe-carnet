@@ -59,4 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => {
         observer.observe(el);
     });
+
 });
+// --- Mobile Navigation Functionality ---
+const navToggle = document.querySelector('.mobile-nav-toggle');
+const primaryNav = document.querySelector('.header__nav');
+
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        document.body.classList.toggle('nav-open');
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+}
