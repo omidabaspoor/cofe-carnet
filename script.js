@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Definitive Overlay Mobile Navigation ---
+    // --- 1. Definitive Overlay Mobile Navigation ---
     const navToggle = document.querySelector('.mobile-nav-toggle');
     const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
     const closeBtn = document.querySelector('.mobile-nav__close-btn');
@@ -8,15 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
     function openMenu() {
-        navToggle.setAttribute('aria-expanded', 'true');
-        mobileNavOverlay.setAttribute('data-visible', 'true');
-        bodyEl.classList.add('nav-is-open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
+        if (mobileNavOverlay) mobileNavOverlay.setAttribute('data-visible', 'true');
+        if (bodyEl) bodyEl.classList.add('nav-is-open');
     }
 
     function closeMenu() {
-        navToggle.setAttribute('aria-expanded', 'false');
-        mobileNavOverlay.setAttribute('data-visible', 'false');
-        bodyEl.classList.remove('nav-is-open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+        if (mobileNavOverlay) mobileNavOverlay.setAttribute('data-visible', 'false');
+        if (bodyEl) bodyEl.classList.remove('nav-is-open');
     }
 
     if (navToggle && mobileNavOverlay && closeBtn) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- CORRECTED & RE-ADDED: Chat Widget Functionality ---
+    // --- 2. Chat Widget Functionality ---
     const chatWidget = document.querySelector('.chat-widget');
     if (chatWidget) {
         const chatButton = chatWidget.querySelector('.chat-widget__button');
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Scroll Animation Functionality ---
+    // --- 3. Scroll Animation Functionality ---
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -176,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     animatedElements.forEach(el => observer.observe(el));
 });
+
 
 
 
