@@ -18,7 +18,9 @@
 </head>
 <body>
 <!-- crated by omid-abbaspoor and yasin-beygi -->
-    <header class="header">
+    <!-- REPLACE the <header> in index.html, services.html, etc. with this -->
+<!-- REPLACE the <header> in index.html, services.html, etc. with this -->
+<header class="header">
         <div class="container header__container">
             <a href="index.html" class="header__logo">
                 <img src="images/logo.webp" alt="لوگوی کافه نت کارنت">
@@ -41,9 +43,7 @@
             </button>
         </div>
     </header>
-
-    <!-- NEW: Fullscreen Overlay Menu for Mobile -->
-    <div class="mobile-nav-overlay" id="mobile-menu" data-visible="false">
+ <div class="mobile-nav-overlay" id="mobile-menu" data-visible="false">
         <button class="mobile-nav__close-btn" aria-label="بستن منو">&times;</button>
         <nav class="mobile-nav">
             <ul>
@@ -54,9 +54,9 @@
             </ul>
         </nav>
     </div>
+   
 
     <main>
-        <!-- Your main content remains unchanged -->
         <section class="hero">
              <div class="hero__stars"></div>
              <div class="container hero__container">
@@ -69,36 +69,134 @@
         </section>
 
         <section class="features">
-            <!-- Your features content -->
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">چرا کارنت را انتخاب کنید؟</h2>
+                <div class="features__grid">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="feature-card__icon"><i class="ph-bold ph-shield-check"></i></div>
+                        <h3 class="feature-card__title">امنیت و اطمینان</h3>
+                        <p class="feature-card__text">اطلاعات شما نزد ما امانت است. تمامی فرآیندها با بالاترین سطح امنیت انجام می‌شوند.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll animate-delay-1">
+                        <div class="feature-card__icon"><i class="ph-bold ph-rocket-launch"></i></div>
+                        <h3 class="feature-card__title">سرعت بی‌نظیر</h3>
+                        <p class="feature-card__text">زمان شما برای ما ارزشمند است. خدمات در کوتاه‌ترین زمان ممکن و با دقت کامل ارائه می‌گردند.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll animate-delay-2">
+                        <div class="feature-card__icon"><i class="ph-bold ph-headset"></i></div>
+                        <h3 class="feature-card__title">پشتیبانی تخصصی</h3>
+                        <p class="feature-card__text">از ابتدا تا انتهای فرآیند همراه شما هستیم و به تمام سوالات شما پاسخ می‌دهیم.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="gallery" id="gallery">
-            <!-- Your gallery content -->
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">تصاویری از محیط ما</h2>
+                <div class="gallery__grid">
+                    <div class="gallery__item animate-on-scroll">
+                        <img src="images/shop-exterior.webp" alt="نمای بیرونی کافه نت کارنت در شب">
+                    </div>
+                    <div class="gallery__item animate-on-scroll animate-delay-1">
+                        <img src="images/shop-interior.webp" alt="محیط داخلی و میز کار کافه نت کارنت">
+                    </div>
+                </div>
+            </div>
         </section>
-        
+<!-- crated by omid-abbaspoor and yasin-beygi -->
         <section class="about" id="about-us">
-            <!-- Your about us content -->
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">آشنایی بیشتر با ما</h2>
+                <div class="about__wrapper animate-on-scroll">
+                    <div class="about__map">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=35.013333,58.778056&hl=fa&z=17&amp;output=embed" 
+                            width="100%" 
+                            height="100%"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="about__content-overlay">
+                        <div class="about__text">
+                            <h3>آدرس و راه‌های ارتباطی</h3>
+                            <p class="about__address"><strong>آدرس:</strong> خراسان رضوی - مه ولات - فیض آباد - خیابان امام خمینی - روبرو بانک ملت</p>
+                            <p>برای ارتباط سریع، ما را در شبکه‌های اجتماعی دنبال کنید یا به صورت حضوری مراجعه فرمایید.</p>
+                             <a href="https://www.google.com/maps/dir/?api=1&destination=35.013333,58.778056" target="_blank" class="button button--navigate">
+                                <i class="ph-bold ph-diamond"></i>
+                                مسیریابی با نقشه
+                            </a>
+                        </div>
+                        <div class="social-links">
+    <a href="tel:+989305649714" class="social-links__item" aria-label="تماس تلفنی"><i class="ph-bold ph-phone-call"></i></a>
+    <a href="https://t.me/merajsz" target="_blank" class="social-links__item" aria-label="تلگرام"><i class="ph-bold ph-telegram-logo"></i></a>
+    <a href="https://www.instagram.com/cafe_net_carnet?igsh=d3p4d2g1Mncwbzc3" target="_blank" class="social-links__item" aria-label="اینستاگرام"><i class="ph-bold ph-instagram-logo"></i></a>
+    
+    <!-- UPDATED RUBIKA ICON LINK -->
+    <a href="https://rubika.ir/mmmeerraaj" target="_blank" class="social-links__item" aria-label="روبیکا">
+        <img src="images/rubika-logo.png" alt="لوگوی روبیکا" class="social-links__img-icon">
+    </a>
+</div>
+<!-- crated by omid-abbaspoor and yasin-beygi -->
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section class="licenses">
-            <!-- Your licenses content -->
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">مجوزها و نمادهای اعتماد</h2>
+                <div class="licenses__grid animate-on-scroll animate-delay-1">
+                    <div class="license__item">
+                        <a href="#" target="_blank" aria-label="نماد اعتماد الکترونیکی">
+                            <img src="https://placehold.co/120x120/f0f0f0/1e1e1e?text=eNamad" alt="نماد اعتماد الکترونیکی (اینماد)">
+                        </a>
+                    </div>
+                    <div class="license__item">
+                         <a href="#" target="_blank" aria-label="نشان ملی ثبت رسانه های دیجیتال">
+                            <img src="https://placehold.co/120x120/f0f0f0/1e1e1e?text=Samandehi" alt="نشان ملی ثبت (ساماندهی)">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
     
     <div class="chat-widget">
-        <!-- Your chat widget content -->
+        <div class="chat-widget__button">
+            <i class="ph-bold ph-chats-circle"></i>
+        </div>
+        <div class="chat-widget__window">
+            <div class="chat-widget__header">
+                <h3>پشتیبانی آنلاین کارنت</h3>
+                <button class="chat-widget__close-btn">&times;</button>
+            </div>
+            <div class="chat-widget__body">
+                <div class="chat-widget__messages"></div>
+                <form class="chat-widget__input-form">
+                    <input type="text" class="chat-widget__input" placeholder="پیام خود را بنویسید..." autocomplete="off">
+                    <button type="submit" class="chat-widget__send-btn" aria-label="ارسال پیام">
+                        <i class="ph-bold ph-paper-plane-tilt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <footer class="footer">
-        <!-- Your footer content -->
+        <div class="container">
+            <p>&copy; ۱۴۰۳ - تمام حقوق برای <span class="logo-text-footer">کافه نت کارنت</span> محفوظ است.</p>
+        </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
 
 <!-- crated by omid-abbaspoor and yasin-beygi -->
-
-
 
 
 
