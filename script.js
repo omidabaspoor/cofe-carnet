@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const chatForm = chatWidget.querySelector('.chat-widget__input-form');
         const chatInput = chatWidget.querySelector('.chat-widget__input');
 
-        if (chatButton && closeChatButton && chatForm) {
+        if (chatButton && closeChatButton) {
             // Event listener for the main chat button to open/close the window
             chatButton.addEventListener('click', () => {
                 chatWidget.classList.toggle('is-open');
@@ -56,26 +56,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 chatWidget.classList.remove('is-open');
             });
             
-            // Event listener for submitting a message
-            chatForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const userInput = chatInput.value.trim();
-                if (userInput) {
-                    const addMessage = (text, sender) => {
-                        if (!messagesContainer) return;
-                        const messageElement = document.createElement('div');
-                        messageElement.classList.add('message', `message--${sender}`);
-                        messageElement.textContent = text;
-                        messagesContainer.appendChild(messageElement);
-                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-                    };
-                    addMessage(userInput, 'user');
-                    chatInput.value = '';
-                    setTimeout(() => {
-                        addMessage('پیام شما دریافت شد. اپراتورهای ما به زودی پاسخ خواهند داد.', 'support');
-                    }, 1500);
-                }
-            });
+            // Event listener for submitting a message (only if the form exists)
+            if (chatForm && chatInput) {
+                chatForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const userInput = chatInput.value.trim();
+                    if (userInput) {
+                        const addMessage = (text, sender) => {
+                            if (!messagesContainer) return;
+                            const messageElement = document.createElement('div');
+                            messageElement.classList.add('message', `message--${sender}`);
+                            messageElement.textContent = text;
+                            messagesContainer.appendChild(messageElement);
+                            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                        };
+                        addMessage(userInput, 'user');
+                        chatInput.value = '';
+                        setTimeout(() => {
+                            addMessage('پیام شما دریافت شد. اپراتورهای ما به زودی پاسخ خواهند داد.', 'support');
+                        }, 1500);
+                    }
+                });
+            }
         }
     }
 
@@ -176,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     animatedElements.forEach(el => observer.observe(el));
 });
+
 
 
 
