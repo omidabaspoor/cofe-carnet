@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
     const closeBtn = document.querySelector('.mobile-nav__close-btn');
     const bodyEl = document.body;
+    // NEW: Select all the links inside the mobile menu
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
     function openMenu() {
         navToggle.setAttribute('aria-expanded', 'true');
@@ -93,6 +95,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         closeBtn.addEventListener('click', closeMenu);
+
+        // NEW: Add event listeners to all mobile nav links to close the menu on click
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
     }
     
     // --- Chat Widget Functionality ---
