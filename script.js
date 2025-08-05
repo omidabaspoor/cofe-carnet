@@ -61,5 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+// --- CORRECTED: Mobile Navigation Functionality ---
+const header = document.querySelector('.header');
+const navToggle = document.querySelector('.mobile-nav-toggle');
+
+if (header && navToggle) {
+    navToggle.addEventListener('click', () => {
+        header.classList.toggle('nav-open');
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+    });
+}
 
 
