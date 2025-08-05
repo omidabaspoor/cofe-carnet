@@ -18,15 +18,15 @@
 </head>
 <body>
 <!-- crated by omid-abbaspoor and yasin-beygi -->
-    <!-- REPLACE the <header> in index.html, services.html, etc. with this -->
-<!-- REPLACE the <header> in index.html, services.html, etc. with this -->
- <header class="header">
+    <header class="header">
         <div class="container header__container">
             <a href="#" class="header__logo">
                 <img src="images/logo.webp" alt="لوگوی کافه نت کارنت">
                 <span class="logo-text">کارنت</span>
             </a>
-            <nav class="header__nav">
+            
+            <!-- This is your Desktop Navigation -->
+            <nav class="header__nav--desktop">
                 <ul>
                     <li><a href="index.html" class="nav__link--active">صفحه اصلی</a></li>
                     <li><a href="services.html">بخش خدمات</a></li>
@@ -34,16 +34,33 @@
                     <li><a href="#about-us">درباره ما</a></li>
                 </ul>
             </nav>
+            
+            <!-- NEW: Hamburger Button for Mobile -->
+            <button class="mobile-nav-toggle" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
         </div>
     </header>
-   
+
+    <!-- NEW: Fullscreen Overlay Menu for Mobile -->
+    <div class="mobile-nav-overlay" id="mobile-menu" data-visible="false">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html">صفحه اصلی</a></li>
+                <li><a href="services.html">بخش خدمات</a></li>
+                <li><a href="#gallery">تصاویری از ما</a></li>
+                <li><a href="#about-us">درباره ما</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <main>
+        <!-- Your main content remains unchanged -->
         <section class="hero">
              <div class="hero__stars"></div>
              <div class="container hero__container">
                  <div class="hero__content">
-                     <h1 class="animate-on-load">کافی نت کارنت: دنیای دیجیتال در دستان شما</h1>
+                     <h1 class="animate-on-load">کافه نت کارنت: دنیای دیجیتال در دستان شما</h1>
                      <p class="animate-on-load animate-delay-1">دیگر نگران صف‌های طولانی و فرآیندهای پیچیده نباشید. ما با تخصص و سرعت، تمام خدمات اینترنتی شما را از ثبت‌نام‌های حساس تا امور روزمره، به بهترین شکل انجام می‌دهیم.</p>
                      <a href="services.html" class="button animate-on-load animate-delay-2">خدمات انلاین  <i class="ph-bold ph-arrow-left"></i></a>
                  </div>
@@ -86,7 +103,7 @@
                 </div>
             </div>
         </section>
-<!-- crated by omid-abbaspoor and yasin-beygi -->
+        
         <section class="about" id="about-us">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">آشنایی بیشتر با ما</h2>
@@ -113,16 +130,13 @@
                             </a>
                         </div>
                         <div class="social-links">
-    <a href="tel:+989305649714" class="social-links__item" aria-label="تماس تلفنی"><i class="ph-bold ph-phone-call"></i></a>
-    <a href="https://t.me/merajsz" target="_blank" class="social-links__item" aria-label="تلگرام"><i class="ph-bold ph-telegram-logo"></i></a>
-    <a href="https://www.instagram.com/cafe_net_carnet?igsh=d3p4d2g1Mncwbzc3" target="_blank" class="social-links__item" aria-label="اینستاگرام"><i class="ph-bold ph-instagram-logo"></i></a>
-    
-    <!-- UPDATED RUBIKA ICON LINK -->
-    <a href="https://rubika.ir/mmmeerraaj" target="_blank" class="social-links__item" aria-label="روبیکا">
-        <img src="images/rubika-logo.png" alt="لوگوی روبیکا" class="social-links__img-icon">
-    </a>
-</div>
-<!-- crated by omid-abbaspoor and yasin-beygi -->
+                            <a href="tel:+989305649714" class="social-links__item" aria-label="تماس تلفنی"><i class="ph-bold ph-phone-call"></i></a>
+                            <a href="https://t.me/merajsz" target="_blank" class="social-links__item" aria-label="تلگرام"><i class="ph-bold ph-telegram-logo"></i></a>
+                            <a href="https://www.instagram.com/cafe_net_carnet?igsh=d3p4d2g1Mncwbzc3" target="_blank" class="social-links__item" aria-label="اینستاگرام"><i class="ph-bold ph-instagram-logo"></i></a>
+                            <a href="https://rubika.ir/mmmeerraaj" target="_blank" class="social-links__item" aria-label="روبیکا">
+                                <img src="images/rubika-logo.png" alt="لوگوی روبیکا" class="social-links__img-icon">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -148,32 +162,12 @@
     </main>
     
     <div class="chat-widget">
-        <div class="chat-widget__button">
-            <i class="ph-bold ph-chats-circle"></i>
-        </div>
-        <div class="chat-widget__window">
-            <div class="chat-widget__header">
-                <h3>پشتیبانی آنلاین کارنت</h3>
-                <button class="chat-widget__close-btn">&times;</button>
-            </div>
-            <div class="chat-widget__body">
-                <div class="chat-widget__messages"></div>
-                <form class="chat-widget__input-form">
-                    <input type="text" class="chat-widget__input" placeholder="پیام خود را بنویسید..." autocomplete="off">
-                    <button type="submit" class="chat-widget__send-btn" aria-label="ارسال پیام">
-                        <i class="ph-bold ph-paper-plane-tilt"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
+        <!-- Your chat widget content -->
     </div>
 
     <footer class="footer">
-        <div class="container">
-            <p>&copy; ۱۴۰۳ - تمام حقوق برای <span class="logo-text-footer">کافه نت کارنت</span> محفوظ است.</p>
-        </div>
+        <!-- Your footer content -->
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
