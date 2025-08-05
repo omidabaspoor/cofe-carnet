@@ -61,16 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-// --- CORRECTED: Mobile Navigation Functionality ---
-const header = document.querySelector('.header');
-const navToggle = document.querySelector('.mobile-nav-toggle');
+// --- BULLETPROOF: Mobile Navigation Functionality ---
+console.log('Mobile menu script loaded.'); // For debugging
 
-if (header && navToggle) {
+const navToggle = document.querySelector('.mobile-nav-toggle');
+const bodyEl = document.body;
+
+if (navToggle && bodyEl) {
     navToggle.addEventListener('click', () => {
-        header.classList.toggle('nav-open');
+        console.log('Toggle button clicked!'); // For debugging
+        bodyEl.classList.toggle('nav-open');
+        
         const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
         navToggle.setAttribute('aria-expanded', !isExpanded);
     });
+} else {
+    console.error('Mobile nav toggle button or body element not found!');
 }
 
 
