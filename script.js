@@ -61,25 +61,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-// --- FINAL ATTEMPT: Direct Control Mobile Navigation ---
-console.log('Mobile menu script loaded.'); // For debugging
+// --- ELEGANT OVERLAY: Mobile Navigation Functionality ---
+document.addEventListener('DOMContentLoaded', () => {
+    // We wrap all scripts in DOMContentLoaded to ensure the page is loaded
+    
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+    const bodyEl = document.body;
 
-const navToggle = document.querySelector('.mobile-nav-toggle');
-// Find the navigation menu that is a sibling of the button
-const primaryNav = navToggle ? navToggle.previousElementSibling : null;
+    if (navToggle && mobileNavOverlay) {
+        navToggle.addEventListener('click', () => {
+            const isVisible = mobileNavOverlay.getAttribute('data-visible') === 'true';
 
-if (navToggle && primaryNav) {
-    navToggle.addEventListener('click', () => {
-        console.log('Toggle button clicked!'); // For debugging
-        
-        // Toggle the 'is-active' class directly on the nav menu
-        primaryNav.classList.toggle('is-active');
-        
-        // Update the button's aria-expanded state for accessibility
-        const isActive = primaryNav.classList.contains('is-active');
-        navToggle.setAttribute('aria-expanded', isActive);
-    });
-} else {
-    console.error('Mobile nav toggle button or the navigation menu next to it was not found!');
-}
+            if (isVisible) {
+                // Hide the menu
+                navToggle.setAttribute('aria-expanded', 'false');
+                mobileNavOverlay.setAttribute('data-visible', 'false');
+                bodyEl.classList.remove('nav-is-open');
+            } else {
+                // Show the menu
+                navToggle.setAttribute('aria-expanded', 'true');
+                mobileNavOverlay.setAttribute('data-visible', 'true');
+                bodyEl.classList.add('nav-is-open');
+            }
+        });
+    }
+    
+    // ... your other scripts like accordion, animations, etc. can go here ...
+    // Note: I'm re-adding your scroll animation script here for completeness
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    animatedElements.forEach(el => observer.observe(el));
+});
 
