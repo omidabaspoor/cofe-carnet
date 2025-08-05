@@ -61,22 +61,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-// --- BULLETPROOF: Mobile Navigation Functionality ---
+// --- FINAL ATTEMPT: Direct Control Mobile Navigation ---
 console.log('Mobile menu script loaded.'); // For debugging
 
 const navToggle = document.querySelector('.mobile-nav-toggle');
-const bodyEl = document.body;
+// Find the navigation menu that is a sibling of the button
+const primaryNav = navToggle ? navToggle.previousElementSibling : null;
 
-if (navToggle && bodyEl) {
+if (navToggle && primaryNav) {
     navToggle.addEventListener('click', () => {
         console.log('Toggle button clicked!'); // For debugging
-        bodyEl.classList.toggle('nav-open');
         
-        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !isExpanded);
+        // Toggle the 'is-active' class directly on the nav menu
+        primaryNav.classList.toggle('is-active');
+        
+        // Update the button's aria-expanded state for accessibility
+        const isActive = primaryNav.classList.contains('is-active');
+        navToggle.setAttribute('aria-expanded', isActive);
     });
 } else {
-    console.error('Mobile nav toggle button or body element not found!');
+    console.error('Mobile nav toggle button or the navigation menu next to it was not found!');
 }
-
 
