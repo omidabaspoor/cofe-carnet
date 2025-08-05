@@ -135,29 +135,28 @@ img { max-width: 100%; display: block; }
     .gallery__grid { grid-template-columns: 1fr; }
 
 }
-/* --- 13. BULLETPROOF: Mobile Navigation Styles --- */
+/* --- 13. FINAL ATTEMPT: Direct Control Mobile Navigation --- */
 
 .mobile-nav-toggle {
-    display: none; /* Hidden on desktop */
+    display: none; /* Hidden on desktop by default */
 }
 
 /* --- Mobile Breakpoint --- */
 @media (max-width: 768px) {
     .header__nav {
-        /* Base styles for the mobile menu container */
+        /* Base styles for the mobile menu */
         position: fixed;
         z-index: 9998;
-        inset: 0 0 0 30%; /* Full height, starts off-screen to the right */
+        inset: 0 0 0 30%; /* Full height, from 30% left edge to the right edge */
         background: rgba(18, 18, 18, 0.98);
         backdrop-filter: blur(1rem);
         
-        /* Hiding Logic: Initially invisible and off-screen */
-        transform: translateX(100%);
-        visibility: hidden;
-        opacity: 0;
-        transition: transform 0.4s ease-out, visibility 0.4s, opacity 0.4s ease-out;
+        /* Hiding Logic: Forcefully hide and position off-screen */
+        transform: translateX(100%) !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s;
 
-        /* Flexbox for vertical alignment of links */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -172,11 +171,18 @@ img { max-width: 100%; display: block; }
         text-align: center;
     }
     
+    /* STYLES WHEN MENU IS ACTIVE */
+    .header__nav.is-active {
+        transform: translateX(0%) !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
     .mobile-nav-toggle {
-        /* Make the button visible and position it */
+        /* Make the button visible on mobile */
         display: block;
         position: relative;
-        z-index: 9999; /* Always on top */
+        z-index: 9999; /* Highest layer */
         background: transparent;
         border: 0;
         width: 2.5rem;
@@ -185,7 +191,7 @@ img { max-width: 100%; display: block; }
         cursor: pointer;
     }
 
-    /* Lines of the hamburger icon */
+    /* Hamburger icon lines */
     .mobile-nav-toggle::before,
     .mobile-nav-toggle::after {
         content: '';
@@ -200,28 +206,14 @@ img { max-width: 100%; display: block; }
     .mobile-nav-toggle::before { top: 25%; }
     .mobile-nav-toggle::after { top: 65%; }
 
-    /* --- STYLES WHEN MENU IS OPEN --- */
-    
-    /* When body has .nav-open class, make the menu visible */
-    body.nav-open .header__nav {
-        transform: translateX(0%);
-        visibility: visible;
-        opacity: 1;
-    }
-    
-    /* Animate hamburger to an 'X' */
-    body.nav-open .mobile-nav-toggle::before {
+    /* Hamburger to 'X' animation when the NAV is active */
+    .mobile-nav-toggle[aria-expanded="true"]::before {
         top: 45%;
         transform: rotate(45deg);
     }
-    body.nav-open .mobile-nav-toggle::after {
+    .mobile-nav-toggle[aria-expanded="true"]::after {
         top: 45%;
         transform: rotate(-45deg);
-    }
-
-    /* Prevent page scroll when menu is open */
-    body.nav-open {
-        overflow: hidden;
     }
 }
 
