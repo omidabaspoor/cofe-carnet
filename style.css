@@ -135,87 +135,93 @@ img { max-width: 100%; display: block; }
     .gallery__grid { grid-template-columns: 1fr; }
 
 }
-/* --- 13. CORRECTED: Mobile Navigation Styles --- */
+/* --- 13. BULLETPROOF: Mobile Navigation Styles --- */
 
 .mobile-nav-toggle {
     display: none; /* Hidden on desktop */
-    position: relative;
-    z-index: 9999;
-    background: transparent;
-    border: 0;
-    width: 2.5rem;
-    aspect-ratio: 1;
-    padding: 0;
-    cursor: pointer;
-}
-
-.mobile-nav-toggle .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-.mobile-nav-toggle::before,
-.mobile-nav-toggle::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background: var(--text-light);
-    border-radius: 5px;
-    left: 0;
-    transition: transform 0.3s ease-out, top 0.3s ease-out;
-}
-
-.mobile-nav-toggle::before {
-    top: 25%;
-}
-.mobile-nav-toggle::after {
-    top: 65%;
 }
 
 /* --- Mobile Breakpoint --- */
 @media (max-width: 768px) {
-    .mobile-nav-toggle {
-        display: block; /* Show the hamburger button */
-    }
-
     .header__nav {
+        /* Base styles for the mobile menu container */
         position: fixed;
-        inset: 0 0 0 30%; /* Slide in from the right */
-        flex-direction: column;
-        padding: min(20vh, 10rem) 2em;
-        background: rgba(18, 18, 18, 0.95);
+        z-index: 9998;
+        inset: 0 0 0 30%; /* Full height, starts off-screen to the right */
+        background: rgba(18, 18, 18, 0.98);
         backdrop-filter: blur(1rem);
+        
+        /* Hiding Logic: Initially invisible and off-screen */
         transform: translateX(100%);
-        transition: transform 0.4s ease-out;
+        visibility: hidden;
+        opacity: 0;
+        transition: transform 0.4s ease-out, visibility 0.4s, opacity 0.4s ease-out;
+
+        /* Flexbox for vertical alignment of links */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
     }
 
     .header__nav ul {
         flex-direction: column;
-        align-items: center;
-        gap: 2rem;
+        gap: 3rem;
         font-size: 1.5rem;
+        text-align: center;
     }
     
-    /* When header has .nav-open class */
-    .header.nav-open .header__nav {
-        transform: translateX(0%);
+    .mobile-nav-toggle {
+        /* Make the button visible and position it */
+        display: block;
+        position: relative;
+        z-index: 9999; /* Always on top */
+        background: transparent;
+        border: 0;
+        width: 2.5rem;
+        aspect-ratio: 1;
+        padding: 0;
+        cursor: pointer;
     }
 
-    .header.nav-open .mobile-nav-toggle::before {
+    /* Lines of the hamburger icon */
+    .mobile-nav-toggle::before,
+    .mobile-nav-toggle::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: var(--text-light);
+        border-radius: 5px;
+        left: 0;
+        transition: transform 0.3s ease-out, top 0.3s ease-out;
+    }
+    .mobile-nav-toggle::before { top: 25%; }
+    .mobile-nav-toggle::after { top: 65%; }
+
+    /* --- STYLES WHEN MENU IS OPEN --- */
+    
+    /* When body has .nav-open class, make the menu visible */
+    body.nav-open .header__nav {
+        transform: translateX(0%);
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    /* Animate hamburger to an 'X' */
+    body.nav-open .mobile-nav-toggle::before {
         top: 45%;
         transform: rotate(45deg);
     }
-    
-    .header.nav-open .mobile-nav-toggle::after {
+    body.nav-open .mobile-nav-toggle::after {
         top: 45%;
         transform: rotate(-45deg);
     }
+
+    /* Prevent page scroll when menu is open */
+    body.nav-open {
+        overflow: hidden;
+    }
 }
+
