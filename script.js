@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => {
         observer.observe(el);
     });
-
 });
 // --- ELEGANT OVERLAY: Mobile Navigation Functionality ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -146,5 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     animatedElements.forEach(el => observer.observe(el));
 });
+
 
 
