@@ -1,0 +1,123 @@
+/* --- 1. وارد کردن استایل‌های پایه و مشترک --- */
+@import url('style.css'); /* این کار تمام استایل‌های صفحه اصلی را به ارث می‌برد */
+
+/* --- 2. استایل‌های اختصاصی صفحه خدمات --- */
+
+.services-hero {
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+}
+.services-hero__title {
+    font-family: var(--font-headings);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--text-light);
+}
+.services-hero__subtitle {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+.search-container {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+#serviceSearchInput {
+    width: 100%;
+    padding: 18px 50px 18px 20px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    color: var(--text-light);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+#serviceSearchInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+}
+
+.services-grid-section {
+    padding: 80px 0;
+}
+.service-category {
+    margin-bottom: 60px;
+}
+.service-category__title {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    border-right: 4px solid var(--primary-color);
+    padding-right: 15px;
+}
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.service-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: var(--surface-color);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    background-color: #2a2a2a;
+}
+.service-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+.service-card span {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.no-results-message {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--surface-color);
+    border-radius: 15px;
+    color: var(--text-muted);
+}
+.no-results-message i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* برای هدر: پاک کردن استایل لینک فعال از style.css اصلی */
+.header__nav a::after {
+    display: none;
+}
+/* اعمال استایل لینک فعال فقط به لینک صفحه خدمات */
+.header__nav a.nav__link--active {
+    color: var(--text-light);
+}
+.header__nav a.nav__link--active::after {
+    display: block;
+    width: 100%;
+}
