@@ -254,4 +254,130 @@ img { max-width: 100%; display: block; }
         overflow: hidden;
     }
 }
+/* --- 14. DEFINITIVE: Elegant Overlay Mobile Navigation --- */
+
+/* Rename original nav to desktop nav */
+.header__nav {
+    display: none; /* Hide the original nav on all screens by default */
+}
+.header__nav--desktop {
+    display: block; /* Show the desktop version */
+}
+
+.mobile-nav-toggle {
+    display: none; /* Hide hamburger on desktop */
+}
+.mobile-nav-overlay {
+    display: none; /* Hide overlay on desktop */
+}
+
+/* --- Mobile Breakpoint --- */
+@media (max-width: 768px) {
+    /* Hide the desktop navigation */
+    .header__nav--desktop {
+        display: none;
+    }
+
+    /* Style the hamburger button */
+    .mobile-nav-toggle {
+        display: block;
+        position: relative;
+        z-index: 10001; /* Must be on top of the overlay */
+        background: transparent;
+        border: 0;
+        width: 2.5rem;
+        aspect-ratio: 1;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    /* Hamburger lines */
+    .mobile-nav-toggle::before,
+    .mobile-nav-toggle::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: var(--text-light); /* Always white */
+        border-radius: 5px;
+        left: 0;
+        transition: transform 0.3s ease-out, top 0.3s ease-out;
+    }
+    .mobile-nav-toggle::before { top: 25%; }
+    .mobile-nav-toggle::after { top: 65%; }
+
+    /* The overlay container */
+    .mobile-nav-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 10000;
+        inset: 0; /* Cover the entire screen */
+        background-color: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1.1);
+        transition: opacity 0.4s ease, visibility 0s 0.4s, transform 0.4s ease;
+    }
+
+    /* Mobile navigation links */
+    .mobile-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+    .mobile-nav li {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .mobile-nav a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-family: var(--font-headings);
+        font-size: 2.5rem;
+        padding: 0.5rem 1rem;
+        display: block;
+    }
+    .mobile-nav a:hover {
+        color: var(--primary-color);
+    }
+
+    /* --- STYLES WHEN MENU IS OPEN --- */
+    
+    .mobile-nav-overlay[data-visible="true"] {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition-delay: 0s;
+    }
+    
+    /* Staggered animation for links */
+    .mobile-nav-overlay[data-visible="true"] .mobile-nav li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .mobile-nav-overlay[data-visible="true"] .mobile-nav li:nth-child(1) { transition-delay: 0.2s; }
+    .mobile-nav-overlay[data-visible="true"] .mobile-nav li:nth-child(2) { transition-delay: 0.3s; }
+    .mobile-nav-overlay[data-visible="true"] .mobile-nav li:nth-child(3) { transition-delay: 0.4s; }
+    .mobile-nav-overlay[data-visible="true"] .mobile-nav li:nth-child(4) { transition-delay: 0.5s; }
+
+    /* Animate hamburger to an 'X' */
+    .mobile-nav-toggle[aria-expanded="true"]::before {
+        top: 45%;
+        transform: rotate(45deg);
+    }
+    .mobile-nav-toggle[aria-expanded="true"]::after {
+        top: 45%;
+        transform: rotate(-45deg);
+    }
+    
+    /* Prevent page scroll when menu is open */
+    body.nav-is-open {
+        overflow: hidden;
+    }
+}
 
