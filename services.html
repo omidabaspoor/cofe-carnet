@@ -21,17 +21,34 @@
                 <img src="images/logo.webp" alt="لوگوی کافه نت کارنت">
                 <span class="logo-text">کارنت</span>
             </a>
+            
+            <!-- This is your Desktop Navigation, it will now display correctly -->
             <nav class="header__nav">
                 <ul>
-                    <li><a href="index.html">صفحه اصلی</a></li>
-                    <li><a href="services.html" class="nav__link--active">بخش خدمات</a></li>
-                    <li><a href="index.html#gallery">تصاویری از ما</a></li>
-                    <li><a href="index.html#about-us">درباره ما</a></li>
+                    <li><a href="index.html" class="nav__link--active">صفحه اصلی</a></li>
+                    <li><a href="services.html">بخش خدمات</a></li>
+                    <li><a href="#gallery">تصاویری از ما</a></li>
+                    <li><a href="#about-us">درباره ما</a></li>
                 </ul>
             </nav>
-          
+            
+            <!-- NEW: Hamburger Button for Mobile -->
+            <button class="mobile-nav-toggle" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
         </div>
     </header>
+ <div class="mobile-nav-overlay" id="mobile-menu" data-visible="false">
+        <button class="mobile-nav__close-btn" aria-label="بستن منو">&times;</button>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="index.html">صفحه اصلی</a></li>
+                <li><a href="services.html">بخش خدمات</a></li>
+                <li><a href="#gallery">تصاویری از ما</a></li>
+                <li><a href="#about-us">درباره ما</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <main>
         <section class="services-hero">
@@ -133,5 +150,6 @@
 </body>
 
 </html><!-- crated by omid-abbaspoor and yasin-beygi -->
+
 
 
